@@ -17,7 +17,7 @@ namespace TaskManager
         public Form1()
         {
             InitializeComponent();
-            lblLoginAs.Text = Environment.UserName;
+            lblLoginAs.Text = "Hello "+Environment.UserName+"!";
             showBasicData();
             cbNewTaskWorkersData();
             cbNewTaskPriorityData();
@@ -466,7 +466,7 @@ namespace TaskManager
                 }
                 else
                 {
-                    MessageBox.Show($"Wyszukiwana kategoria: {searchPriorityString} nie istnieje");
+                    MessageBox.Show($"Wyszukiwany priorytet: {searchPriorityString} nie istnieje");
                 }
             }
             catch (Exception)
