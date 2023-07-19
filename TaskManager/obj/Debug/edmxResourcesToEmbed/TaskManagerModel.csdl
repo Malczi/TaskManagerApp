@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckListsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_TaskCategories">
+    <Key>
+      <PropertyRef Name="IdCategory" />
+    </Key>
+    <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdCat__4CA06362" FromRole="tbl_TaskCategories" ToRole="tbl_Tasks" />
+  </EntityType>
+  <EntityType Name="tbl_TaskPriority">
+    <Key>
+      <PropertyRef Name="IdTaskPriority" />
+    </Key>
+    <Property Name="IdTaskPriority" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PriorityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdTas__5CD6CB2B" FromRole="tbl_TaskPriority" ToRole="tbl_Tasks" />
+  </EntityType>
+  <EntityType Name="tbl_Tasks">
+    <Key>
+      <PropertyRef Name="IdTask" />
+    </Key>
+    <Property Name="IdTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="TaskName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdWorkers" Type="Int32" Nullable="false" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="IdStatus" Type="Int32" />
+    <Property Name="IdTaskPriority" Type="Int32" />
+    <NavigationProperty Name="tbl_TaskCategories" Relationship="Self.FK__tbl_Tasks__IdCat__4CA06362" FromRole="tbl_Tasks" ToRole="tbl_TaskCategories" />
+    <NavigationProperty Name="tbl_TaskPriority" Relationship="Self.FK__tbl_Tasks__IdTas__5CD6CB2B" FromRole="tbl_Tasks" ToRole="tbl_TaskPriority" />
+    <NavigationProperty Name="tbl_TaskStatus" Relationship="Self.FK__tbl_Tasks__IdSta__4E88ABD4" FromRole="tbl_Tasks" ToRole="tbl_TaskStatus" />
+    <NavigationProperty Name="tbl_Workers" Relationship="Self.FK__tbl_Tasks__IdWor__4D94879B" FromRole="tbl_Tasks" ToRole="tbl_Workers" />
+  </EntityType>
+  <EntityType Name="tbl_TaskStatus">
+    <Key>
+      <PropertyRef Name="IdTaskStatus" />
+    </Key>
+    <Property Name="IdTaskStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdSta__4E88ABD4" FromRole="tbl_TaskStatus" ToRole="tbl_Tasks" />
+  </EntityType>
+  <EntityType Name="tbl_Workers">
+    <Key>
+      <PropertyRef Name="IdWorkers" />
+    </Key>
+    <Property Name="IdWorkers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwisko" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imię" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginStoart" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdWor__4D94879B" FromRole="tbl_Workers" ToRole="tbl_Tasks" />
+  </EntityType>
+  <EntityType Name="kwe_Tasks">
+    <Key>
+      <PropertyRef Name="IdTask" />
+      <PropertyRef Name="IdCategory" />
+      <PropertyRef Name="CategoryName" />
+      <PropertyRef Name="TaskName" />
+      <PropertyRef Name="IdWorkers" />
+      <PropertyRef Name="LoginStoart" />
+      <PropertyRef Name="StatusName" />
+      <PropertyRef Name="IdTaskStatus" />
+      <PropertyRef Name="PriorityName" />
+      <PropertyRef Name="IdTaskPriority" />
+    </Key>
+    <Property Name="IdTask" Type="Int32" Nullable="false" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaskName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdWorkers" Type="Int32" Nullable="false" />
+    <Property Name="LoginStoart" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTaskStatus" Type="Int32" Nullable="false" />
+    <Property Name="PriorityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTaskPriority" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tbl_Tasks__IdCat__4CA06362">
+    <End Role="tbl_TaskCategories" Type="Self.tbl_TaskCategories" Multiplicity="1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskCategories">
+        <PropertyRef Name="IdCategory" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdTas__5CD6CB2B">
+    <End Role="tbl_TaskPriority" Type="Self.tbl_TaskPriority" Multiplicity="0..1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskPriority">
+        <PropertyRef Name="IdTaskPriority" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdTaskPriority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdSta__4E88ABD4">
+    <End Role="tbl_TaskStatus" Type="Self.tbl_TaskStatus" Multiplicity="0..1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskStatus">
+        <PropertyRef Name="IdTaskStatus" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdWor__4D94879B">
+    <End Role="tbl_Workers" Type="Self.tbl_Workers" Multiplicity="1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Workers">
+        <PropertyRef Name="IdWorkers" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdWorkers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckListsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_TaskCategories" EntityType="Self.tbl_TaskCategories" />
+    <EntitySet Name="tbl_TaskPriority" EntityType="Self.tbl_TaskPriority" />
+    <EntitySet Name="tbl_Tasks" EntityType="Self.tbl_Tasks" />
+    <EntitySet Name="tbl_TaskStatus" EntityType="Self.tbl_TaskStatus" />
+    <EntitySet Name="tbl_Workers" EntityType="Self.tbl_Workers" />
+    <EntitySet Name="kwe_Tasks" EntityType="Self.kwe_Tasks" />
+    <AssociationSet Name="FK__tbl_Tasks__IdCat__4CA06362" Association="Self.FK__tbl_Tasks__IdCat__4CA06362">
+      <End Role="tbl_TaskCategories" EntitySet="tbl_TaskCategories" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdTas__5CD6CB2B" Association="Self.FK__tbl_Tasks__IdTas__5CD6CB2B">
+      <End Role="tbl_TaskPriority" EntitySet="tbl_TaskPriority" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdSta__4E88ABD4" Association="Self.FK__tbl_Tasks__IdSta__4E88ABD4">
+      <End Role="tbl_TaskStatus" EntitySet="tbl_TaskStatus" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdWor__4D94879B" Association="Self.FK__tbl_Tasks__IdWor__4D94879B">
+      <End Role="tbl_Workers" EntitySet="tbl_Workers" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

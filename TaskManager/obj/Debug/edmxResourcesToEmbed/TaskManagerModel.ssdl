@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckListsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_TaskCategories">
+    <Key>
+      <PropertyRef Name="IdCategory" />
+    </Key>
+    <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_TaskPriority">
+    <Key>
+      <PropertyRef Name="IdTaskPriority" />
+    </Key>
+    <Property Name="IdTaskPriority" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PriorityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Tasks">
+    <Key>
+      <PropertyRef Name="IdTask" />
+    </Key>
+    <Property Name="IdTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="IdWorkers" Type="int" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="IdStatus" Type="int" />
+    <Property Name="IdTaskPriority" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_TaskStatus">
+    <Key>
+      <PropertyRef Name="IdTaskStatus" />
+    </Key>
+    <Property Name="IdTaskStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Workers">
+    <Key>
+      <PropertyRef Name="IdWorkers" />
+    </Key>
+    <Property Name="IdWorkers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwisko" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Imię" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="LoginStoart" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CheckLists.dbo.kwe_Tasks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="kwe_Tasks">
+    <Key>
+      <PropertyRef Name="IdTask" />
+      <PropertyRef Name="IdCategory" />
+      <PropertyRef Name="CategoryName" />
+      <PropertyRef Name="TaskName" />
+      <PropertyRef Name="IdWorkers" />
+      <PropertyRef Name="LoginStoart" />
+      <PropertyRef Name="StatusName" />
+      <PropertyRef Name="IdTaskStatus" />
+      <PropertyRef Name="PriorityName" />
+      <PropertyRef Name="IdTaskPriority" />
+    </Key>
+    <Property Name="IdTask" Type="int" Nullable="false" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="IdWorkers" Type="int" Nullable="false" />
+    <Property Name="LoginStoart" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdTaskStatus" Type="int" Nullable="false" />
+    <Property Name="PriorityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdTaskPriority" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tbl_Tasks__IdCat__4CA06362">
+    <End Role="tbl_TaskCategories" Type="Self.tbl_TaskCategories" Multiplicity="1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskCategories">
+        <PropertyRef Name="IdCategory" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdSta__4E88ABD4">
+    <End Role="tbl_TaskStatus" Type="Self.tbl_TaskStatus" Multiplicity="0..1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskStatus">
+        <PropertyRef Name="IdTaskStatus" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdTas__5CD6CB2B">
+    <End Role="tbl_TaskPriority" Type="Self.tbl_TaskPriority" Multiplicity="0..1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_TaskPriority">
+        <PropertyRef Name="IdTaskPriority" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdTaskPriority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_Tasks__IdWor__4D94879B">
+    <End Role="tbl_Workers" Type="Self.tbl_Workers" Multiplicity="1" />
+    <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Workers">
+        <PropertyRef Name="IdWorkers" />
+      </Principal>
+      <Dependent Role="tbl_Tasks">
+        <PropertyRef Name="IdWorkers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckListsModelStoreContainer">
+    <EntitySet Name="tbl_TaskCategories" EntityType="Self.tbl_TaskCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_TaskPriority" EntityType="Self.tbl_TaskPriority" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Tasks" EntityType="Self.tbl_Tasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_TaskStatus" EntityType="Self.tbl_TaskStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Workers" EntityType="Self.tbl_Workers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kwe_Tasks" EntityType="Self.kwe_Tasks" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [kwe_Tasks].[IdTask] AS [IdTask], 
+    [kwe_Tasks].[IdCategory] AS [IdCategory], 
+    [kwe_Tasks].[CategoryName] AS [CategoryName], 
+    [kwe_Tasks].[TaskName] AS [TaskName], 
+    [kwe_Tasks].[IdWorkers] AS [IdWorkers], 
+    [kwe_Tasks].[LoginStoart] AS [LoginStoart], 
+    [kwe_Tasks].[StartTime] AS [StartTime], 
+    [kwe_Tasks].[EndTime] AS [EndTime], 
+    [kwe_Tasks].[StatusName] AS [StatusName], 
+    [kwe_Tasks].[IdTaskStatus] AS [IdTaskStatus], 
+    [kwe_Tasks].[PriorityName] AS [PriorityName], 
+    [kwe_Tasks].[IdTaskPriority] AS [IdTaskPriority]
+    FROM [dbo].[kwe_Tasks] AS [kwe_Tasks]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tbl_Tasks__IdCat__4CA06362" Association="Self.FK__tbl_Tasks__IdCat__4CA06362">
+      <End Role="tbl_TaskCategories" EntitySet="tbl_TaskCategories" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdSta__4E88ABD4" Association="Self.FK__tbl_Tasks__IdSta__4E88ABD4">
+      <End Role="tbl_TaskStatus" EntitySet="tbl_TaskStatus" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdTas__5CD6CB2B" Association="Self.FK__tbl_Tasks__IdTas__5CD6CB2B">
+      <End Role="tbl_TaskPriority" EntitySet="tbl_TaskPriority" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_Tasks__IdWor__4D94879B" Association="Self.FK__tbl_Tasks__IdWor__4D94879B">
+      <End Role="tbl_Workers" EntitySet="tbl_Workers" />
+      <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

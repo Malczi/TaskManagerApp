@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CheckListsModelStoreContainer" CdmEntityContainer="CheckListsEntities">
+    <EntitySetMapping Name="tbl_TaskCategories">
+      <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskCategories">
+        <MappingFragment StoreEntitySet="tbl_TaskCategories">
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_TaskPriority">
+      <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskPriority">
+        <MappingFragment StoreEntitySet="tbl_TaskPriority">
+          <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Tasks">
+      <EntityTypeMapping TypeName="CheckListsModel.tbl_Tasks">
+        <MappingFragment StoreEntitySet="tbl_Tasks">
+          <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_TaskStatus">
+      <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskStatus">
+        <MappingFragment StoreEntitySet="tbl_TaskStatus">
+          <ScalarProperty Name="IdTaskStatus" ColumnName="IdTaskStatus" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Workers">
+      <EntityTypeMapping TypeName="CheckListsModel.tbl_Workers">
+        <MappingFragment StoreEntitySet="tbl_Workers">
+          <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imię" ColumnName="Imię" />
+          <ScalarProperty Name="LoginStoart" ColumnName="LoginStoart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kwe_Tasks">
+      <EntityTypeMapping TypeName="CheckListsModel.kwe_Tasks">
+        <MappingFragment StoreEntitySet="kwe_Tasks">
+          <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+          <ScalarProperty Name="LoginStoart" ColumnName="LoginStoart" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="IdTaskStatus" ColumnName="IdTaskStatus" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+          <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

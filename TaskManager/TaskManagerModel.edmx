@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CheckListsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_TaskCategories">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_TaskPriority">
+          <Key>
+            <PropertyRef Name="IdTaskPriority" />
+          </Key>
+          <Property Name="IdTaskPriority" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriorityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Tasks">
+          <Key>
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCategory" Type="int" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IdWorkers" Type="int" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="IdStatus" Type="int" />
+          <Property Name="IdTaskPriority" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_TaskStatus">
+          <Key>
+            <PropertyRef Name="IdTaskStatus" />
+          </Key>
+          <Property Name="IdTaskStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Workers">
+          <Key>
+            <PropertyRef Name="IdWorkers" />
+          </Key>
+          <Property Name="IdWorkers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Imię" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LoginStoart" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CheckLists.dbo.kwe_Tasks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="kwe_Tasks">
+          <Key>
+            <PropertyRef Name="IdTask" />
+            <PropertyRef Name="IdCategory" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="IdWorkers" />
+            <PropertyRef Name="LoginStoart" />
+            <PropertyRef Name="StatusName" />
+            <PropertyRef Name="IdTaskStatus" />
+            <PropertyRef Name="PriorityName" />
+            <PropertyRef Name="IdTaskPriority" />
+          </Key>
+          <Property Name="IdTask" Type="int" Nullable="false" />
+          <Property Name="IdCategory" Type="int" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TaskName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IdWorkers" Type="int" Nullable="false" />
+          <Property Name="LoginStoart" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdTaskStatus" Type="int" Nullable="false" />
+          <Property Name="PriorityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdTaskPriority" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbl_Tasks__IdCat__4CA06362">
+          <End Role="tbl_TaskCategories" Type="Self.tbl_TaskCategories" Multiplicity="1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskCategories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdSta__4E88ABD4">
+          <End Role="tbl_TaskStatus" Type="Self.tbl_TaskStatus" Multiplicity="0..1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskStatus">
+              <PropertyRef Name="IdTaskStatus" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdTas__5CD6CB2B">
+          <End Role="tbl_TaskPriority" Type="Self.tbl_TaskPriority" Multiplicity="0..1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskPriority">
+              <PropertyRef Name="IdTaskPriority" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdTaskPriority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdWor__4D94879B">
+          <End Role="tbl_Workers" Type="Self.tbl_Workers" Multiplicity="1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Workers">
+              <PropertyRef Name="IdWorkers" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdWorkers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheckListsModelStoreContainer">
+          <EntitySet Name="tbl_TaskCategories" EntityType="Self.tbl_TaskCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TaskPriority" EntityType="Self.tbl_TaskPriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Tasks" EntityType="Self.tbl_Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TaskStatus" EntityType="Self.tbl_TaskStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Workers" EntityType="Self.tbl_Workers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kwe_Tasks" EntityType="Self.kwe_Tasks" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [kwe_Tasks].[IdTask] AS [IdTask], 
+    [kwe_Tasks].[IdCategory] AS [IdCategory], 
+    [kwe_Tasks].[CategoryName] AS [CategoryName], 
+    [kwe_Tasks].[TaskName] AS [TaskName], 
+    [kwe_Tasks].[IdWorkers] AS [IdWorkers], 
+    [kwe_Tasks].[LoginStoart] AS [LoginStoart], 
+    [kwe_Tasks].[StartTime] AS [StartTime], 
+    [kwe_Tasks].[EndTime] AS [EndTime], 
+    [kwe_Tasks].[StatusName] AS [StatusName], 
+    [kwe_Tasks].[IdTaskStatus] AS [IdTaskStatus], 
+    [kwe_Tasks].[PriorityName] AS [PriorityName], 
+    [kwe_Tasks].[IdTaskPriority] AS [IdTaskPriority]
+    FROM [dbo].[kwe_Tasks] AS [kwe_Tasks]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tbl_Tasks__IdCat__4CA06362" Association="Self.FK__tbl_Tasks__IdCat__4CA06362">
+            <End Role="tbl_TaskCategories" EntitySet="tbl_TaskCategories" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdSta__4E88ABD4" Association="Self.FK__tbl_Tasks__IdSta__4E88ABD4">
+            <End Role="tbl_TaskStatus" EntitySet="tbl_TaskStatus" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdTas__5CD6CB2B" Association="Self.FK__tbl_Tasks__IdTas__5CD6CB2B">
+            <End Role="tbl_TaskPriority" EntitySet="tbl_TaskPriority" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdWor__4D94879B" Association="Self.FK__tbl_Tasks__IdWor__4D94879B">
+            <End Role="tbl_Workers" EntitySet="tbl_Workers" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CheckListsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_TaskCategories">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdCat__4CA06362" FromRole="tbl_TaskCategories" ToRole="tbl_Tasks" />
+        </EntityType>
+        <EntityType Name="tbl_TaskPriority">
+          <Key>
+            <PropertyRef Name="IdTaskPriority" />
+          </Key>
+          <Property Name="IdTaskPriority" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriorityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdTas__5CD6CB2B" FromRole="tbl_TaskPriority" ToRole="tbl_Tasks" />
+        </EntityType>
+        <EntityType Name="tbl_Tasks">
+          <Key>
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdWorkers" Type="Int32" Nullable="false" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="IdStatus" Type="Int32" />
+          <Property Name="IdTaskPriority" Type="Int32" />
+          <NavigationProperty Name="tbl_TaskCategories" Relationship="Self.FK__tbl_Tasks__IdCat__4CA06362" FromRole="tbl_Tasks" ToRole="tbl_TaskCategories" />
+          <NavigationProperty Name="tbl_TaskPriority" Relationship="Self.FK__tbl_Tasks__IdTas__5CD6CB2B" FromRole="tbl_Tasks" ToRole="tbl_TaskPriority" />
+          <NavigationProperty Name="tbl_TaskStatus" Relationship="Self.FK__tbl_Tasks__IdSta__4E88ABD4" FromRole="tbl_Tasks" ToRole="tbl_TaskStatus" />
+          <NavigationProperty Name="tbl_Workers" Relationship="Self.FK__tbl_Tasks__IdWor__4D94879B" FromRole="tbl_Tasks" ToRole="tbl_Workers" />
+        </EntityType>
+        <EntityType Name="tbl_TaskStatus">
+          <Key>
+            <PropertyRef Name="IdTaskStatus" />
+          </Key>
+          <Property Name="IdTaskStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdSta__4E88ABD4" FromRole="tbl_TaskStatus" ToRole="tbl_Tasks" />
+        </EntityType>
+        <EntityType Name="tbl_Workers">
+          <Key>
+            <PropertyRef Name="IdWorkers" />
+          </Key>
+          <Property Name="IdWorkers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwisko" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imię" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginStoart" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Tasks" Relationship="Self.FK__tbl_Tasks__IdWor__4D94879B" FromRole="tbl_Workers" ToRole="tbl_Tasks" />
+        </EntityType>
+        <EntityType Name="kwe_Tasks">
+          <Key>
+            <PropertyRef Name="IdTask" />
+            <PropertyRef Name="IdCategory" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="IdWorkers" />
+            <PropertyRef Name="LoginStoart" />
+            <PropertyRef Name="StatusName" />
+            <PropertyRef Name="IdTaskStatus" />
+            <PropertyRef Name="PriorityName" />
+            <PropertyRef Name="IdTaskPriority" />
+          </Key>
+          <Property Name="IdTask" Type="Int32" Nullable="false" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdWorkers" Type="Int32" Nullable="false" />
+          <Property Name="LoginStoart" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTaskStatus" Type="Int32" Nullable="false" />
+          <Property Name="PriorityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdTaskPriority" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbl_Tasks__IdCat__4CA06362">
+          <End Role="tbl_TaskCategories" Type="Self.tbl_TaskCategories" Multiplicity="1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskCategories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdTas__5CD6CB2B">
+          <End Role="tbl_TaskPriority" Type="Self.tbl_TaskPriority" Multiplicity="0..1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskPriority">
+              <PropertyRef Name="IdTaskPriority" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdTaskPriority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdSta__4E88ABD4">
+          <End Role="tbl_TaskStatus" Type="Self.tbl_TaskStatus" Multiplicity="0..1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaskStatus">
+              <PropertyRef Name="IdTaskStatus" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Tasks__IdWor__4D94879B">
+          <End Role="tbl_Workers" Type="Self.tbl_Workers" Multiplicity="1" />
+          <End Role="tbl_Tasks" Type="Self.tbl_Tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Workers">
+              <PropertyRef Name="IdWorkers" />
+            </Principal>
+            <Dependent Role="tbl_Tasks">
+              <PropertyRef Name="IdWorkers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheckListsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_TaskCategories" EntityType="Self.tbl_TaskCategories" />
+          <EntitySet Name="tbl_TaskPriority" EntityType="Self.tbl_TaskPriority" />
+          <EntitySet Name="tbl_Tasks" EntityType="Self.tbl_Tasks" />
+          <EntitySet Name="tbl_TaskStatus" EntityType="Self.tbl_TaskStatus" />
+          <EntitySet Name="tbl_Workers" EntityType="Self.tbl_Workers" />
+          <EntitySet Name="kwe_Tasks" EntityType="Self.kwe_Tasks" />
+          <AssociationSet Name="FK__tbl_Tasks__IdCat__4CA06362" Association="Self.FK__tbl_Tasks__IdCat__4CA06362">
+            <End Role="tbl_TaskCategories" EntitySet="tbl_TaskCategories" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdTas__5CD6CB2B" Association="Self.FK__tbl_Tasks__IdTas__5CD6CB2B">
+            <End Role="tbl_TaskPriority" EntitySet="tbl_TaskPriority" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdSta__4E88ABD4" Association="Self.FK__tbl_Tasks__IdSta__4E88ABD4">
+            <End Role="tbl_TaskStatus" EntitySet="tbl_TaskStatus" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Tasks__IdWor__4D94879B" Association="Self.FK__tbl_Tasks__IdWor__4D94879B">
+            <End Role="tbl_Workers" EntitySet="tbl_Workers" />
+            <End Role="tbl_Tasks" EntitySet="tbl_Tasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CheckListsModelStoreContainer" CdmEntityContainer="CheckListsEntities">
+          <EntitySetMapping Name="tbl_TaskCategories">
+            <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskCategories">
+              <MappingFragment StoreEntitySet="tbl_TaskCategories">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TaskPriority">
+            <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskPriority">
+              <MappingFragment StoreEntitySet="tbl_TaskPriority">
+                <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Tasks">
+            <EntityTypeMapping TypeName="CheckListsModel.tbl_Tasks">
+              <MappingFragment StoreEntitySet="tbl_Tasks">
+                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+                <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TaskStatus">
+            <EntityTypeMapping TypeName="CheckListsModel.tbl_TaskStatus">
+              <MappingFragment StoreEntitySet="tbl_TaskStatus">
+                <ScalarProperty Name="IdTaskStatus" ColumnName="IdTaskStatus" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Workers">
+            <EntityTypeMapping TypeName="CheckListsModel.tbl_Workers">
+              <MappingFragment StoreEntitySet="tbl_Workers">
+                <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="LoginStoart" ColumnName="LoginStoart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kwe_Tasks">
+            <EntityTypeMapping TypeName="CheckListsModel.kwe_Tasks">
+              <MappingFragment StoreEntitySet="kwe_Tasks">
+                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+                <ScalarProperty Name="LoginStoart" ColumnName="LoginStoart" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="IdTaskStatus" ColumnName="IdTaskStatus" />
+                <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+                <ScalarProperty Name="IdTaskPriority" ColumnName="IdTaskPriority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
