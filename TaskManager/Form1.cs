@@ -510,5 +510,11 @@ namespace TaskManager
             MessageBox.Show("Wybierz dane wyszukiwania!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             showBasicData();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            FormOprions formOprions = new FormOprions();
+            formOprions.ShowDialog();
+        }
     }
 }
