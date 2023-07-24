@@ -29,15 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnConfirmed = new System.Windows.Forms.Button();
+            this.btnTesting = new System.Windows.Forms.Button();
+            this.btnInProgress = new System.Windows.Forms.Button();
+            this.btnAdded = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.lblAppName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLoginAs = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.brnMinimalize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pnlAddNewTask = new System.Windows.Forms.Panel();
+            this.btnAddTask = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cbNewTaskPriority = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,8 +58,10 @@
             this.tbNewTaskDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTaskDetails = new System.Windows.Forms.Panel();
+            this.btnDelTask = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.cbSelectedStatus = new System.Windows.Forms.ComboBox();
+            this.btnPushChanges = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblTaskFrom = new System.Windows.Forms.Label();
             this.cbSelectedTaskPriority = new System.Windows.Forms.ComboBox();
@@ -61,37 +73,25 @@
             this.tbSelectedTaskDescription = new System.Windows.Forms.TextBox();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lblTime = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlSearcgingTask = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.cbSearchingPriority = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cbSearchingWorker = new System.Windows.Forms.ComboBox();
-            this.dgvTasks = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnDelTask = new System.Windows.Forms.Button();
-            this.btnPushChanges = new System.Windows.Forms.Button();
-            this.btnAddTask = new System.Windows.Forms.Button();
-            this.brnMinimalize = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.btnConfirmed = new System.Windows.Forms.Button();
-            this.btnTesting = new System.Windows.Forms.Button();
-            this.btnInProgress = new System.Windows.Forms.Button();
-            this.btnAdded = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgvTasks = new System.Windows.Forms.DataGridView();
             this.pnlMenu.SuspendLayout();
             this.pnlUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.SuspendLayout();
             this.pnlAddNewTask.SuspendLayout();
             this.pnlTaskDetails.SuspendLayout();
             this.pnlBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlSearcgingTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -109,6 +109,108 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(238, 977);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnSettings.Image = global::TaskManager.Properties.Resources.control;
+            this.btnSettings.Location = new System.Drawing.Point(0, 915);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(238, 62);
+            this.btnSettings.TabIndex = 1;
+            this.btnSettings.Text = "Ustawienia";
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnConfirmed
+            // 
+            this.btnConfirmed.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConfirmed.FlatAppearance.BorderSize = 0;
+            this.btnConfirmed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmed.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnConfirmed.Image = global::TaskManager.Properties.Resources.approved;
+            this.btnConfirmed.Location = new System.Drawing.Point(0, 393);
+            this.btnConfirmed.Name = "btnConfirmed";
+            this.btnConfirmed.Size = new System.Drawing.Size(238, 62);
+            this.btnConfirmed.TabIndex = 1;
+            this.btnConfirmed.Text = "Wdrożone";
+            this.btnConfirmed.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnConfirmed.UseVisualStyleBackColor = true;
+            this.btnConfirmed.Click += new System.EventHandler(this.btnConfirmed_Click);
+            // 
+            // btnTesting
+            // 
+            this.btnTesting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTesting.FlatAppearance.BorderSize = 0;
+            this.btnTesting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTesting.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTesting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnTesting.Image = global::TaskManager.Properties.Resources.testing;
+            this.btnTesting.Location = new System.Drawing.Point(0, 331);
+            this.btnTesting.Name = "btnTesting";
+            this.btnTesting.Size = new System.Drawing.Size(238, 62);
+            this.btnTesting.TabIndex = 1;
+            this.btnTesting.Text = "Testowane";
+            this.btnTesting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnTesting.UseVisualStyleBackColor = true;
+            this.btnTesting.Click += new System.EventHandler(this.btnTesting_Click);
+            // 
+            // btnInProgress
+            // 
+            this.btnInProgress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInProgress.FlatAppearance.BorderSize = 0;
+            this.btnInProgress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInProgress.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInProgress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnInProgress.Image = global::TaskManager.Properties.Resources.work_in_progress;
+            this.btnInProgress.Location = new System.Drawing.Point(0, 269);
+            this.btnInProgress.Name = "btnInProgress";
+            this.btnInProgress.Size = new System.Drawing.Size(238, 62);
+            this.btnInProgress.TabIndex = 1;
+            this.btnInProgress.Text = "W trakcie";
+            this.btnInProgress.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnInProgress.UseVisualStyleBackColor = true;
+            this.btnInProgress.Click += new System.EventHandler(this.btnInProgress_Click);
+            // 
+            // btnAdded
+            // 
+            this.btnAdded.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdded.FlatAppearance.BorderSize = 0;
+            this.btnAdded.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdded.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdded.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnAdded.Image = global::TaskManager.Properties.Resources.toDo;
+            this.btnAdded.Location = new System.Drawing.Point(0, 207);
+            this.btnAdded.Name = "btnAdded";
+            this.btnAdded.Size = new System.Drawing.Size(238, 62);
+            this.btnAdded.TabIndex = 1;
+            this.btnAdded.Text = "Przyjęte";
+            this.btnAdded.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAdded.UseVisualStyleBackColor = true;
+            this.btnAdded.Click += new System.EventHandler(this.btnAdded_Click);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnHome.Image = global::TaskManager.Properties.Resources.home_button__2_;
+            this.btnHome.Location = new System.Drawing.Point(0, 145);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(238, 62);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // pnlUser
             // 
@@ -131,6 +233,16 @@
             this.lblAppName.TabIndex = 1;
             this.lblAppName.Text = "Task Manager";
             this.lblAppName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(64, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // lblLoginAs
             // 
@@ -155,6 +267,37 @@
             this.pnlTop.Size = new System.Drawing.Size(1425, 56);
             this.pnlTop.TabIndex = 1;
             // 
+            // brnMinimalize
+            // 
+            this.brnMinimalize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brnMinimalize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.brnMinimalize.FlatAppearance.BorderSize = 0;
+            this.brnMinimalize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brnMinimalize.Image = global::TaskManager.Properties.Resources.minimize;
+            this.brnMinimalize.Location = new System.Drawing.Point(1305, 0);
+            this.brnMinimalize.Name = "brnMinimalize";
+            this.brnMinimalize.Size = new System.Drawing.Size(60, 56);
+            this.brnMinimalize.TabIndex = 2;
+            this.brnMinimalize.UseVisualStyleBackColor = true;
+            this.brnMinimalize.Click += new System.EventHandler(this.brnMinimalize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::TaskManager.Properties.Resources.close;
+            this.btnClose.Location = new System.Drawing.Point(1365, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(60, 56);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // pnlAddNewTask
             // 
             this.pnlAddNewTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
@@ -174,6 +317,19 @@
             this.pnlAddNewTask.Size = new System.Drawing.Size(1425, 232);
             this.pnlAddNewTask.TabIndex = 2;
             // 
+            // btnAddTask
+            // 
+            this.btnAddTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddTask.FlatAppearance.BorderSize = 0;
+            this.btnAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTask.Image = global::TaskManager.Properties.Resources.addTask;
+            this.btnAddTask.Location = new System.Drawing.Point(1132, 148);
+            this.btnAddTask.Name = "btnAddTask";
+            this.btnAddTask.Size = new System.Drawing.Size(94, 73);
+            this.btnAddTask.TabIndex = 3;
+            this.btnAddTask.UseVisualStyleBackColor = true;
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -181,9 +337,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(857, 145);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 28);
+            this.label6.Size = new System.Drawing.Size(102, 28);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Priority:";
+            this.label6.Text = "Priorytet:";
             // 
             // cbNewTaskPriority
             // 
@@ -204,9 +360,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(1080, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 28);
+            this.label4.Size = new System.Drawing.Size(107, 28);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Worker:";
+            this.label4.Text = "Zlecający:";
             // 
             // cbNewTaskWorker
             // 
@@ -227,9 +383,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(857, 69);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 28);
+            this.label3.Size = new System.Drawing.Size(109, 28);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Task category:";
+            this.label3.Text = "Kategoria:";
             // 
             // cbNewTaskCategory
             // 
@@ -250,9 +406,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(10, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 28);
+            this.label2.Size = new System.Drawing.Size(138, 28);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Task description:";
+            this.label2.Text = "Opis zadania:";
             // 
             // tbNewTaskDescription
             // 
@@ -273,9 +429,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(7, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 45);
+            this.label1.Size = new System.Drawing.Size(238, 45);
             this.label1.TabIndex = 0;
-            this.label1.Text = "New Task";
+            this.label1.Text = "Nowe zadanie";
             // 
             // pnlTaskDetails
             // 
@@ -298,6 +454,19 @@
             this.pnlTaskDetails.Name = "pnlTaskDetails";
             this.pnlTaskDetails.Size = new System.Drawing.Size(1425, 207);
             this.pnlTaskDetails.TabIndex = 3;
+            // 
+            // btnDelTask
+            // 
+            this.btnDelTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDelTask.FlatAppearance.BorderSize = 0;
+            this.btnDelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelTask.Image = global::TaskManager.Properties.Resources.deleteTask;
+            this.btnDelTask.Location = new System.Drawing.Point(639, 127);
+            this.btnDelTask.Name = "btnDelTask";
+            this.btnDelTask.Size = new System.Drawing.Size(73, 70);
+            this.btnDelTask.TabIndex = 15;
+            this.btnDelTask.UseVisualStyleBackColor = true;
+            this.btnDelTask.Click += new System.EventHandler(this.btnDelTask_Click);
             // 
             // label10
             // 
@@ -322,6 +491,19 @@
             this.cbSelectedStatus.Size = new System.Drawing.Size(192, 38);
             this.cbSelectedStatus.TabIndex = 13;
             // 
+            // btnPushChanges
+            // 
+            this.btnPushChanges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnPushChanges.FlatAppearance.BorderSize = 0;
+            this.btnPushChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPushChanges.Image = global::TaskManager.Properties.Resources.push_white;
+            this.btnPushChanges.Location = new System.Drawing.Point(1305, 64);
+            this.btnPushChanges.Name = "btnPushChanges";
+            this.btnPushChanges.Size = new System.Drawing.Size(97, 71);
+            this.btnPushChanges.TabIndex = 9;
+            this.btnPushChanges.UseVisualStyleBackColor = true;
+            this.btnPushChanges.Click += new System.EventHandler(this.btnPushChanges_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -329,9 +511,9 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(857, 52);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 28);
+            this.label7.Size = new System.Drawing.Size(102, 28);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Priority:";
+            this.label7.Text = "Priorytet:";
             // 
             // lblTaskFrom
             // 
@@ -340,9 +522,9 @@
             this.lblTaskFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.lblTaskFrom.Location = new System.Drawing.Point(960, 13);
             this.lblTaskFrom.Name = "lblTaskFrom";
-            this.lblTaskFrom.Size = new System.Drawing.Size(65, 28);
+            this.lblTaskFrom.Size = new System.Drawing.Size(107, 28);
             this.lblTaskFrom.TabIndex = 9;
-            this.lblTaskFrom.Text = "From:";
+            this.lblTaskFrom.Text = "Zlecający:";
             this.lblTaskFrom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbSelectedTaskPriority
@@ -364,9 +546,9 @@
             this.lblDateOfTask.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.lblDateOfTask.Location = new System.Drawing.Point(531, 13);
             this.lblDateOfTask.Name = "lblDateOfTask";
-            this.lblDateOfTask.Size = new System.Drawing.Size(134, 28);
+            this.lblDateOfTask.Size = new System.Drawing.Size(142, 28);
             this.lblDateOfTask.TabIndex = 8;
-            this.lblDateOfTask.Text = "Date of task:";
+            this.lblDateOfTask.Text = "Zata zlecenia:";
             this.lblDateOfTask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
@@ -376,20 +558,20 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(634, 52);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(148, 28);
+            this.label8.Size = new System.Drawing.Size(109, 28);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Task category:";
+            this.label8.Text = "Kategoria:";
             // 
             // lblTaskNumber
             // 
             this.lblTaskNumber.AutoSize = true;
             this.lblTaskNumber.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaskNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.lblTaskNumber.Location = new System.Drawing.Point(278, 13);
+            this.lblTaskNumber.Location = new System.Drawing.Point(306, 13);
             this.lblTaskNumber.Name = "lblTaskNumber";
-            this.lblTaskNumber.Size = new System.Drawing.Size(138, 28);
+            this.lblTaskNumber.Size = new System.Drawing.Size(161, 28);
             this.lblTaskNumber.TabIndex = 2;
-            this.lblTaskNumber.Text = "Task number:";
+            this.lblTaskNumber.Text = "Numer zadania:";
             this.lblTaskNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbSelectedTaskCategory
@@ -411,9 +593,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(7, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(227, 45);
+            this.label5.Size = new System.Drawing.Size(288, 45);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Selected Task";
+            this.label5.Text = "Wybrane zadanie";
             // 
             // tbSelectedTaskDescription
             // 
@@ -448,6 +630,16 @@
             this.lblTime.TabIndex = 0;
             this.lblTime.Text = "Time";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::TaskManager.Properties.Resources.clock31;
+            this.pictureBox2.Location = new System.Drawing.Point(1369, 14);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(48, 29);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -474,9 +666,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(300, 13);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 28);
+            this.label11.Size = new System.Drawing.Size(102, 28);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Priority:";
+            this.label11.Text = "Priorytet:";
             // 
             // cbSearchingPriority
             // 
@@ -497,9 +689,9 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(76, 14);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 28);
+            this.label9.Size = new System.Drawing.Size(107, 28);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Worker:";
+            this.label9.Text = "Zlecający:";
             // 
             // cbSearchingWorker
             // 
@@ -512,6 +704,19 @@
             this.cbSearchingWorker.Name = "cbSearchingWorker";
             this.cbSearchingWorker.Size = new System.Drawing.Size(192, 38);
             this.cbSearchingWorker.TabIndex = 7;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Image = global::TaskManager.Properties.Resources.search_glas;
+            this.btnSearch.Location = new System.Drawing.Point(524, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(77, 68);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvTasks
             // 
@@ -551,211 +756,6 @@
             this.dgvTasks.TabIndex = 7;
             this.dgvTasks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTasks_CellContentClick);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Image = global::TaskManager.Properties.Resources.search_glas;
-            this.btnSearch.Location = new System.Drawing.Point(524, 14);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(77, 68);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::TaskManager.Properties.Resources.clock31;
-            this.pictureBox2.Location = new System.Drawing.Point(1369, 14);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(48, 29);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnDelTask
-            // 
-            this.btnDelTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDelTask.FlatAppearance.BorderSize = 0;
-            this.btnDelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelTask.Image = global::TaskManager.Properties.Resources.deleteTask;
-            this.btnDelTask.Location = new System.Drawing.Point(639, 127);
-            this.btnDelTask.Name = "btnDelTask";
-            this.btnDelTask.Size = new System.Drawing.Size(86, 70);
-            this.btnDelTask.TabIndex = 15;
-            this.btnDelTask.UseVisualStyleBackColor = true;
-            this.btnDelTask.Click += new System.EventHandler(this.btnDelTask_Click);
-            // 
-            // btnPushChanges
-            // 
-            this.btnPushChanges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPushChanges.FlatAppearance.BorderSize = 0;
-            this.btnPushChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPushChanges.Image = global::TaskManager.Properties.Resources.push_white;
-            this.btnPushChanges.Location = new System.Drawing.Point(1305, 64);
-            this.btnPushChanges.Name = "btnPushChanges";
-            this.btnPushChanges.Size = new System.Drawing.Size(97, 71);
-            this.btnPushChanges.TabIndex = 9;
-            this.btnPushChanges.UseVisualStyleBackColor = true;
-            this.btnPushChanges.Click += new System.EventHandler(this.btnPushChanges_Click);
-            // 
-            // btnAddTask
-            // 
-            this.btnAddTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddTask.FlatAppearance.BorderSize = 0;
-            this.btnAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTask.Image = global::TaskManager.Properties.Resources.addTask;
-            this.btnAddTask.Location = new System.Drawing.Point(1132, 148);
-            this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(94, 73);
-            this.btnAddTask.TabIndex = 3;
-            this.btnAddTask.UseVisualStyleBackColor = true;
-            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
-            // 
-            // brnMinimalize
-            // 
-            this.brnMinimalize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brnMinimalize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.brnMinimalize.FlatAppearance.BorderSize = 0;
-            this.brnMinimalize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brnMinimalize.Image = global::TaskManager.Properties.Resources.minimize;
-            this.brnMinimalize.Location = new System.Drawing.Point(1305, 0);
-            this.brnMinimalize.Name = "brnMinimalize";
-            this.brnMinimalize.Size = new System.Drawing.Size(60, 56);
-            this.brnMinimalize.TabIndex = 2;
-            this.brnMinimalize.UseVisualStyleBackColor = true;
-            this.brnMinimalize.Click += new System.EventHandler(this.brnMinimalize_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::TaskManager.Properties.Resources.close;
-            this.btnClose.Location = new System.Drawing.Point(1365, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(60, 56);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnSettings.Image = global::TaskManager.Properties.Resources.control;
-            this.btnSettings.Location = new System.Drawing.Point(0, 915);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(238, 62);
-            this.btnSettings.TabIndex = 1;
-            this.btnSettings.Text = "Options";
-            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // btnConfirmed
-            // 
-            this.btnConfirmed.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConfirmed.FlatAppearance.BorderSize = 0;
-            this.btnConfirmed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmed.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnConfirmed.Image = global::TaskManager.Properties.Resources.approved;
-            this.btnConfirmed.Location = new System.Drawing.Point(0, 393);
-            this.btnConfirmed.Name = "btnConfirmed";
-            this.btnConfirmed.Size = new System.Drawing.Size(238, 62);
-            this.btnConfirmed.TabIndex = 1;
-            this.btnConfirmed.Text = "Confirmed";
-            this.btnConfirmed.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnConfirmed.UseVisualStyleBackColor = true;
-            this.btnConfirmed.Click += new System.EventHandler(this.btnConfirmed_Click);
-            // 
-            // btnTesting
-            // 
-            this.btnTesting.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTesting.FlatAppearance.BorderSize = 0;
-            this.btnTesting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTesting.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTesting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnTesting.Image = global::TaskManager.Properties.Resources.testing;
-            this.btnTesting.Location = new System.Drawing.Point(0, 331);
-            this.btnTesting.Name = "btnTesting";
-            this.btnTesting.Size = new System.Drawing.Size(238, 62);
-            this.btnTesting.TabIndex = 1;
-            this.btnTesting.Text = "Testing";
-            this.btnTesting.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnTesting.UseVisualStyleBackColor = true;
-            this.btnTesting.Click += new System.EventHandler(this.btnTesting_Click);
-            // 
-            // btnInProgress
-            // 
-            this.btnInProgress.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInProgress.FlatAppearance.BorderSize = 0;
-            this.btnInProgress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInProgress.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInProgress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnInProgress.Image = global::TaskManager.Properties.Resources.work_in_progress;
-            this.btnInProgress.Location = new System.Drawing.Point(0, 269);
-            this.btnInProgress.Name = "btnInProgress";
-            this.btnInProgress.Size = new System.Drawing.Size(238, 62);
-            this.btnInProgress.TabIndex = 1;
-            this.btnInProgress.Text = "In Progress";
-            this.btnInProgress.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnInProgress.UseVisualStyleBackColor = true;
-            this.btnInProgress.Click += new System.EventHandler(this.btnInProgress_Click);
-            // 
-            // btnAdded
-            // 
-            this.btnAdded.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdded.FlatAppearance.BorderSize = 0;
-            this.btnAdded.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdded.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdded.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnAdded.Image = global::TaskManager.Properties.Resources.toDo;
-            this.btnAdded.Location = new System.Drawing.Point(0, 207);
-            this.btnAdded.Name = "btnAdded";
-            this.btnAdded.Size = new System.Drawing.Size(238, 62);
-            this.btnAdded.TabIndex = 1;
-            this.btnAdded.Text = "Added";
-            this.btnAdded.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnAdded.UseVisualStyleBackColor = true;
-            this.btnAdded.Click += new System.EventHandler(this.btnAdded_Click);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnHome.Image = global::TaskManager.Properties.Resources.home_button__2_;
-            this.btnHome.Location = new System.Drawing.Point(0, 145);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(238, 62);
-            this.btnHome.TabIndex = 1;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(64, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -777,6 +777,7 @@
             this.pnlMenu.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.pnlAddNewTask.ResumeLayout(false);
@@ -785,11 +786,10 @@
             this.pnlTaskDetails.PerformLayout();
             this.pnlBottom.ResumeLayout(false);
             this.pnlBottom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlSearcgingTask.ResumeLayout(false);
             this.pnlSearcgingTask.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

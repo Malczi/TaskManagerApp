@@ -177,6 +177,7 @@
     <None Include="images\addTask.png" />
     <None Include="images\search glas.png" />
     <None Include="images\deleteTask.png" />
+    <None Include="Resources\redbin.png" />
     <Content Include="taskIcon.ico" />
     <Content Include="TaskManagerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

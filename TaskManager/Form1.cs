@@ -17,7 +17,7 @@ namespace TaskManager
         public Form1()
         {
             InitializeComponent();
-            lblLoginAs.Text = "Hello "+Environment.UserName+"!";
+            lblLoginAs.Text = "Witaj "+Environment.UserName+"!";
             showBasicData();
             cbNewTaskWorkersData();
             cbNewTaskPriorityData();
@@ -55,6 +55,13 @@ namespace TaskManager
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void clearLabelSelectedTask()
+        {
+            lblTaskNumber.Text = "Numer zadania:";
+            lblDateOfTask.Text = "Data zlecenia:";
+            lblTaskFrom.Text = "Zlecający:";
         }
 
         private void cbNewTaskWorkersData()
@@ -109,6 +116,7 @@ namespace TaskManager
             this.dgvTasks.Columns[8].Width = 80;
             this.dgvTasks.Columns[10].HeaderText = "Priorytet zlecenia";
             this.dgvTasks.Columns[10].Width = 80;
+            clearLabelSelectedTask();
         }
 
         private void showAddedData()
@@ -136,6 +144,7 @@ namespace TaskManager
             this.dgvTasks.Columns[8].Width = 80;
             this.dgvTasks.Columns[10].HeaderText = "Priorytet zlecenia";
             this.dgvTasks.Columns[10].Width = 80;
+            clearLabelSelectedTask();
         }
 
         private void showInProgressData()
@@ -163,6 +172,7 @@ namespace TaskManager
             this.dgvTasks.Columns[8].Width = 80;
             this.dgvTasks.Columns[10].HeaderText = "Priorytet zlecenia";
             this.dgvTasks.Columns[10].Width = 80;
+            clearLabelSelectedTask();
         }
 
         private void showTestingData()
@@ -190,6 +200,7 @@ namespace TaskManager
             this.dgvTasks.Columns[8].Width = 80;
             this.dgvTasks.Columns[10].HeaderText = "Priorytet zlecenia";
             this.dgvTasks.Columns[10].Width = 80;
+            clearLabelSelectedTask();
         }
 
         private void showConfirmedData()
@@ -217,6 +228,7 @@ namespace TaskManager
             this.dgvTasks.Columns[8].Width = 80;
             this.dgvTasks.Columns[10].HeaderText = "Priorytet zlecenia";
             this.dgvTasks.Columns[10].Width = 80;
+            clearLabelSelectedTask();
         }
 
         private void brnMinimalize_Click(object sender, EventArgs e)
@@ -278,6 +290,7 @@ namespace TaskManager
                 MessageBox.Show("Dodano nowe zlecenie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 showBasicData();
                 defaultValueAfterAddNewTask();
+                clearLabelSelectedTask();
             }
         }
 
@@ -299,9 +312,9 @@ namespace TaskManager
             cbSelectedStatus.ValueMember = "IdTaskStatus";
             cbSelectedStatus.DisplayMember = "StatusName";
             cbSelectedStatus.SelectedValue = selectetStatusInt;
-            lblTaskNumber.Text = "Task number: "+ this.dgvTasks.CurrentRow.Cells[0].Value.ToString();
-            lblDateOfTask.Text = "Date of task: " + this.dgvTasks.CurrentRow.Cells[6].Value.ToString();
-            lblTaskFrom.Text = "From: "+ this.dgvTasks.CurrentRow.Cells[5].Value.ToString();
+            lblTaskNumber.Text = "Numer zadania: "+ this.dgvTasks.CurrentRow.Cells[0].Value.ToString();
+            lblDateOfTask.Text = "Data zlecenia: " + this.dgvTasks.CurrentRow.Cells[6].Value.ToString();
+            lblTaskFrom.Text = "Zlecający: "+ this.dgvTasks.CurrentRow.Cells[5].Value.ToString();
         }
 
         private void btnPushChanges_Click(object sender, EventArgs e)
@@ -338,6 +351,7 @@ namespace TaskManager
                 MessageBox.Show("Poprawnie zaktualizowano.");
                 clearActiveTask();
                 showBasicData();
+                clearLabelSelectedTask();
 
             }
         }
@@ -367,6 +381,7 @@ namespace TaskManager
                         MessageBox.Show("Zlecenie zostało usunięte!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         showBasicData();
                         clearActiveTask();
+                        clearLabelSelectedTask();
                     }
                     catch (Exception)
                     {
@@ -513,8 +528,15 @@ namespace TaskManager
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            FormOprions formOprions = new FormOprions();
+            FormOprions formOprions = new FormOprions(db);
+            formOprions.FormClosing += FormOprions_FormClosing;
             formOprions.ShowDialog();
+        }
+
+        private void FormOprions_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cbNewTaskWorkersData();
+            cbNewTaskCategoryData();
         }
     }
 }

@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="clock31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\clock3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\clock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,9 +145,6 @@
   <data name="addTask" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\addTask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search glas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\search glas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="push white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\push white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,8 +154,8 @@
   <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clock31" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\clock3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search glas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\search glas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="work-in-progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\work-in-progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -168,5 +168,8 @@
   </data>
   <data name="deleteTask" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\deleteTask.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redbin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redbin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

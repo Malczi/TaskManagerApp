@@ -193,6 +193,16 @@ namespace TaskManager.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap redbin {
+            get {
+                object obj = ResourceManager.GetObject("redbin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_glas {
             get {
                 object obj = ResourceManager.GetObject("search glas", resourceCulture);
